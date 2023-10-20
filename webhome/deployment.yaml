@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nutribuddy-deployment
+  labels:
+    app: nutribuddy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nutribuddy
+  template:
+    metadata:
+      labels:
+        app: nutribuddy
+    spec:
+      containers:
+      - name: nutribuddy
+        image: icr.io/com-nutribuddy-dev/nutribuddy-dev/nutribuddy:1.7
+        ports:
+        - containerPort: 3000
